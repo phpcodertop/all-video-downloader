@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Classes\FacebookDownloader;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -41,6 +42,14 @@ class MainController extends Controller
                 }
                 break;
             case 'facebook':
+                $downloader = new FacebookDownloader();
+                $videoData = $downloader->getVideoInfo($url);
+
+                if($videoData == false){
+                    return redirect('/')->withErrors(["Can't download private videos"]);
+                }
+                $data['videoData'] = $videoData;
+                return view('download.facebook',$data);
                 break;
             case 'vimeo':
                 break;
@@ -56,7 +65,7 @@ class MainController extends Controller
         } elseif (strpos($url, 'vimeo') > 0) {
             return 'vimeo';
         }elseif (strpos($url, 'facebook') > 0) {
-            return 'vimeo';
+            return 'facebook';
         } else {
             return 'unknown';
         }
@@ -71,5 +80,9 @@ class MainController extends Controller
             return false;
         }
     }
+
+
+
+
 
 }
