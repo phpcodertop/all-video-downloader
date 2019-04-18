@@ -2,6 +2,10 @@
 # all-video-downloader
 Download youtube videos/playlists , facebook , vimeo videos
 
+This application is able to download youtube videos and playlist videos, also it can download facebook public videos
+
+Note: This application can't download private facebook videos, Also vimeo videos downloaded is still pending
+
 # Installation
 ~~~~
 git clone https://github.com/phpcodertop/all-video-downloader.git
