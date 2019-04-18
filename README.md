@@ -2,7 +2,7 @@
 # all-video-downloader
 Download youtube videos/playlists , facebook , vimeo videos
 
-# Installaion
+# Installation
 ~~~~
 git clone https://github.com/phpcodertop/all-video-downloader.git
 
