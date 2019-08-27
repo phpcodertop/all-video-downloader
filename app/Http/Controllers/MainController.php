@@ -30,13 +30,12 @@ class MainController extends Controller
                     $img = "https://img.youtube.com/vi/".$id."/0.jpg";
                     $data['links'] = $links;
                     $data['thumbnail'] = $img;
-                    $data['title'] = $ytarr['title'];
+                    $data['title'] = @$ytarr['title'];
                     return view('download.youtube-video',$data);
                 }else{
                     $playlist_id = $this->detectPlaylist($url);
                     $url = "https://www.youtube.com/list_ajax?style=json&action_get_list=1&list=PLvah45Gv0-CfNA0zfS4Sr6ov0pAL96Fr1";
                     $playlistData = json_decode(file_get_contents($url),true);
-//                    dd($data);
                     $data['playlist'] = $playlistData;
                     return view('download.youtube-playlist',$data);
                 }
